@@ -35,6 +35,7 @@
   "homepage": "https://github.com/buzzzzx/React-practice-project-Adopt-Me#readme",
   "dependencies": {
     "@frontendmasters/pet": "^1.0.3",
+    "@reach/router": "^1.3.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
