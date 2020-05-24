@@ -29,6 +29,7 @@ class Carousel extends React.Component {
               data-index={index}
               src={photo.large}
               className={index === active ? "active" : ""}
+              alt="animal thumbnail"
             />
           ))}
         </div>
