@@ -1,17 +1,20 @@
 import React from "react";
+import { navigate } from "@reach/router";
 import pet from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
+import Modal from "./Modal";
 
 class Details extends React.Component {
-  state = { loading: true };
+  state = { loading: true, showModal: false };
   // Only execute once after first render.
   componentDidMount() {
     // throw new Error("lolllll");
     // need to use arrow function
     pet.animal(Number(this.props.id)).then(({ animal }) => {
       this.setState({
+        url: animal.url,
         name: animal.name,
         animal: animal.type,
         breed: animal.breeds.primary,
@@ -23,12 +26,28 @@ class Details extends React.Component {
     }, console.error);
   }
 
+  toggleModal = () => {
+    this.setState({ showModal: !this.state.showModal });
+  };
+
+  adopt = () => {
+    navigate(this.state.url);
+  };
+
   render() {
     if (this.state.loading) {
       return <h1>loading ...</h1>;
     }
 
-    const { name, animal, breed, location, description, media } = this.state;
+    const {
+      name,
+      animal,
+      breed,
+      location,
+      description,
+      media,
+      showModal,
+    } = this.state;
 
     return (
       <div className="details">
@@ -39,11 +58,21 @@ class Details extends React.Component {
           <ThemeContext.Consumer>
             {([theme]) => (
               <button
+                onClick={this.toggleModal}
                 style={{ backgroundColor: theme }}
               >{`Adopt ${name}`}</button>
             )}
           </ThemeContext.Consumer>
           <p>{description}</p>
+          {showModal ? (
+            <Modal>
+              <h1>Would you like to adopt {name}?</h1>
+              <div className="buttons">
+                <button onClick={this.adopt}>Yes</button>
+                <button onClick={this.toggleModal}>No</button>
+              </div>
+            </Modal>
+          ) : null}
         </div>
       </div>
     );
