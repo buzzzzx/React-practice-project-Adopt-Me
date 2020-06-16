@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "parcel build --public-url ./dist/ src/index.html",
     "clear-build-cache": "rm -rf .cache/ dist/",
     "dev": "parcel src/index.html",
     "dev:mock": "cross-env PET_MOCK=mock npm run dev",
     "format": "prettier \"src/**/*.{js,html}\" --write",
     "lint": "eslint \"src/**/*.{js,jsx}\" --quiet",
+    "start": "npm -s run build && babel-node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -39,8 +41,11 @@
   },
   "homepage": "https://github.com/buzzzzx/React-practice-project-Adopt-Me#readme",
   "dependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/node": "^7.10.1",
     "@frontendmasters/pet": "^1.0.3",
     "@reach/router": "^1.3.3",
+    "express": "^4.17.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
