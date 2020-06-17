@@ -1,13 +1,23 @@
 import React from "react";
-import { navigate } from "@reach/router";
-import pet from "@frontendmasters/pet";
+import { navigate, RouteComponentProps } from "@reach/router";
+import pet, { Photo } from "@frontendmasters/pet";
 import Carousel from "./Carousel";
 import ErrorBoundary from "./ErrorBoundary";
 import ThemeContext from "./ThemeContext";
 import Modal from "./Modal";
 
-class Details extends React.Component {
-  state = { loading: true, showModal: false };
+class Details extends React.Component<RouteComponentProps<{ id: string }>> {
+  state = {
+    loading: true,
+    showModal: false,
+    url: "",
+    name: "",
+    animal: "",
+    breed: "",
+    location: "",
+    description: "",
+    media: [] as Photo[],
+  };
   // Only execute once after first render.
   componentDidMount() {
     // throw new Error("lolllll");
@@ -79,7 +89,9 @@ class Details extends React.Component {
   }
 }
 
-export default function DetailsWithErrorBoundary(props) {
+export default function DetailsWithErrorBoundary(
+  props: RouteComponentProps<{ id: string }>
+) {
   return (
     <ErrorBoundary>
       <Details {...props} />

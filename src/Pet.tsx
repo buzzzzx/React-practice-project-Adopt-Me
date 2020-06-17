@@ -1,8 +1,25 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Link } from "@reach/router";
+import { Photo } from "@frontendmasters/pet";
+
+interface IProps {
+  name: string;
+  animal: string;
+  breed: string;
+  media: Photo[];
+  location: string;
+  id: number;
+}
 
 // Pet component.
-export default function Pet({ name, animal, breed, media, location, id }) {
+const Pet: FunctionComponent<IProps> = ({
+  name,
+  animal,
+  breed,
+  media,
+  location,
+  id,
+}) => {
   // This is jsx, will automatically translate to code(createElement...)
   // Which is through parce-babel
   let hero = "http://placecorgi.com/300/300";
@@ -20,4 +37,5 @@ export default function Pet({ name, animal, breed, media, location, id }) {
       </div>
     </Link>
   );
-}
+};
+export default Pet;
