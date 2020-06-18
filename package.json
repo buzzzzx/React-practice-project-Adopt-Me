@@ -32,7 +32,9 @@
     "eslint-plugin-react": "^7.20.0",
     "eslint-plugin-react-hooks": "^4.0.2",
     "parcel-bundler": "^1.12.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "react-redux": "^7.2.0",
+    "redux": "^4.0.5"
   },
   "bugs": {
     "url": "https://github.com/buzzzzx/React-practice-project-Adopt-Me/issues"

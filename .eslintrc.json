@@ -30,6 +30,11 @@
   "settings": {
     "react": {
       "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "extension": [".js", ".jsx", ".ts", ".tsx"]
+      }
     }
   }
 }
