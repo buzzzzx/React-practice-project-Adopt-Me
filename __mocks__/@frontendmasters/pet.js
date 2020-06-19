@@ -1,4 +1,4 @@
-import { readSyncFile } from "fs";
+import { readFileSync } from "fs";
 import path from "path";
 import { act } from "@testing-library/react";
 
@@ -13,7 +13,7 @@ const breeds = [
 ];
 
 const doggos = JSON.parse(
-  readSyncFile(path.join(__dirname, "/res.json")).toString()
+  readFileSync(path.join(__dirname, "/res.json")).toString()
 );
 
 export const ANIMALS = ["dog", "cat", "bird"];
